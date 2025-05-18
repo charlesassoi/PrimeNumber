@@ -1,23 +1,30 @@
-let c=0,ci=0,cd=0;
-const count=document.getElementById("count");
-const incCount=document.getElementById("incCount");
-const decCount=document.getElementById("decCount");
+function cPrime(){
+    const res=document.getElementById("result");
+    const n=parseInt(document.getElementById("input").value);
 
-function inc(){
-    c++;
-    ci=(ci>10) ?0:ci+1;
-    update();
+    if (isNaN(n) || n<=1){
+        res.textContent="Enter a real number";
+        res.style.color="red";
+        return;
+    
+    }
+    let isPrime=true;
+    for(let i=2;i<=Math.sqrt(n);i++){
+        if(n%i===0){
+            isPrime=false;
+            break;
+        }
+    }
+    if(isPrime){
+            res.textContent=`${n} is a prime number`;
+            res.style.color="green";
+            
+        }else{
+            res.textContent=`${n} is a non- prime number`;
+            res.style.color="red";
+            
 
-}
+        }
 
-function dec(){
-    c=(c>0)?c-1:0;
-    cd=(cd>10) ?0:cd+1;
-    update();
-}
-function update(){
-    count.textContent=c;
-    incCount.textContent=ci;
-    decCount.textContent=cd;
-
-}
+    
+    }
